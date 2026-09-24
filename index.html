@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edugenie AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header class="navbar">
+    <h1>🧞 Edugenie AI</h1>
+    <p>Your personal AI study companion</p>
+  </header>
+
+  <main class="container">
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="chat-tab">💬 Study Helper</button>
+      <button class="tab-btn" data-tab="quiz-tab">📝 Quiz Generator</button>
+      <button class="tab-btn" data-tab="summary-tab">📄 Summary</button>
+      <button class="tab-btn" data-tab="path-tab">🗺️ Learning Path</button>
+    </nav>
+
+    <!-- CHAT TAB -->
+    <section id="chat-tab" class="tab-content active">
+      <div class="card">
+        <h2>Ask Edugenie anything</h2>
+        <div id="chat-window" class="chat-window"></div>
+        <div class="input-row">
+          <input type="text" id="chat-input" placeholder="e.g. Explain Newton's second law" />
+          <button id="chat-send">Ask</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ TAB -->
+    <section id="quiz-tab" class="tab-content">
+      <div class="card">
+        <h2>Generate a quiz</h2>
+        <div class="input-row">
+          <input type="text" id="quiz-topic" placeholder="Topic e.g. Photosynthesis" />
+        </div>
+        <div class="input-row">
+          <label>Questions:
+            <input type="number" id="quiz-count" value="5" min="1" max="10" />
+          </label>
+          <label>Difficulty:
+            <select id="quiz-difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+          <button id="quiz-generate">Generate Quiz</button>
+        </div>
+        <div id="quiz-loading" class="hidden">Generating quiz...</div>
+        <div id="quiz-container"></div>
+        <div id="quiz-score" class="hidden"></div>
+      </div>
+    </section>
+
+    <!-- SUMMARY TAB -->
+    <section id="summary-tab" class="tab-content">
+      <div class="card">
+        <h2>Summarize a passage</h2>
+        <textarea id="summary-input" rows="8" placeholder="Paste a long paragraph or article here..." style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-bottom:12px;"></textarea>
+        <button id="summary-generate">Summarize</button>
+        <div id="summary-loading" class="hidden">Summarizing...</div>
+        <div id="summary-result" class="card" style="margin-top:14px; display:none; white-space:pre-wrap;"></div>
+      </div>
+    </section>
+
+    <!-- LEARNING PATH TAB -->
+    <section id="path-tab" class="tab-content">
+      <div class="card">
+        <h2>Generate a learning roadmap</h2>
+        <div class="input-row">
+          <input type="text" id="path-topic" placeholder="e.g. Data Structures" />
+          <button id="path-generate">Generate Path</button>
+        </div>
+        <div id="path-loading" class="hidden">Generating roadmap...</div>
+        <div id="path-result" class="card" style="margin-top:14px; display:none; white-space:pre-wrap;"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Edugenie AI &copy; 2026 — Built with Flask</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
